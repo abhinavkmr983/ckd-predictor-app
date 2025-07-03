@@ -3,6 +3,12 @@ import pandas as pd
 import numpy as np
 import joblib
 
+try:
+    model = joblib.load("models/kidney_ckd_model.pkl")
+except Exception as e:
+    st.error(f"❌ Failed to load model: {e}")
+    st.stop()
+
 # Load pipeline (includes preprocessing and model)
 model = joblib.load("models/kidney_ckd_model.pkl")
 
